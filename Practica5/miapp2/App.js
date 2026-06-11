@@ -2,19 +2,19 @@
 
 /* Zona1: Importaciones de componenetes y archivos */
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image} from 'react-native';
-import {Saludo} from './components/Saludo';
-import {Saludo2} from './components/Saludo2';
-import {Perfil} from './components/Perfil';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { Saludo } from './components/Saludo';
+import { Saludo2 } from './components/Saludo2';
+import { Perfil } from './components/Perfil';
 
 
 /* Zona2: Main - Hogar de los componentes */
 export default function App() {
   return (
     <View style={styles.container}>
-   
-      <Text>------------ Componentes Nativos ------------</Text>
-      <Image source={require('./assets/wave.png')}/>
+
+      {/* <Text>------------ Componentes Nativos ------------</Text>
+      <Image source={require('./assets/wave.png')} />
       <Text>Hola mundo React Native</Text>
       <Text>------------ Componentes Nativos ------------</Text>
 
@@ -24,8 +24,22 @@ export default function App() {
       <Text>------------ Componente Propio simple ------------</Text>
       <Saludo2></Saludo2>
 
-      <Text>------------ Componente Propio Perfil ------------</Text>
-      <Perfil></Perfil>
+      <Text>------------ Componente Propio Perfil ------------</Text> */}
+
+      
+      <Perfil nombre="Eduardo Barron" carrera="Sistemas" materia="Programacion Movil" cuatri="9"></Perfil>
+
+      <Text>--------------------------------------------------------------------</Text>
+      <Text>--------------------------------------------------------------------</Text>
+      <Perfil 
+      nombre="Eduardo" 
+      carrera="Sistemas" 
+      materia="Programacion Movil" 
+      cuatri="9"></Perfil>
+
+
+
+
       <StatusBar style="auto" />
 
     </View>
