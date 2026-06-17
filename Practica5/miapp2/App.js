@@ -13,29 +13,18 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-      {/* <Text>------------ Componentes Nativos ------------</Text>
-      <Image source={require('./assets/wave.png')} />
-      <Text>Hola mundo React Native</Text>
-      <Text>------------ Componentes Nativos ------------</Text>
-
-      <Text>------------ Componente Propio simple ------------</Text>
-      <Saludo></Saludo>
-
-      <Text>------------ Componente Propio simple ------------</Text>
-      <Saludo2></Saludo2>
-
-      <Text>------------ Componente Propio Perfil ------------</Text> */}
-
       
-      <Perfil nombre="Eduardo Barron" carrera="Sistemas" materia="Programacion Movil" cuatri="9"></Perfil>
+      <Perfil estiloExt={styles.tarjetaRoja} nombre="Eduardo Barron" carrera="Sistemas" materia="Programacion Movil" cuatri="9"></Perfil>
 
     
       <Perfil 
+      estiloExt={styles.tarjetaVerde}
       nombre="Eduardo" 
       carrera="Sistemas" 
       materia="Programacion Movil" 
       cuatri="9"></Perfil>
 
+      <Perfil estiloExt={styles.tarjetaRoja} nombre="2222" carrera="Sistemas" materia="Programacion Movil" cuatri="9"></Perfil>
 
 
 
@@ -51,6 +40,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection:'column'
   },
+
+  tarjetaRoja:{backgroundColor:'#FF6B6B'},
+  tarjetaVerde:{backgroundColor:'#6BCB77'},
 });
