@@ -3,15 +3,14 @@
 /* Zona1: Importaciones de componenetes y archivos */
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import MenuScreen from './screens/MenuScreen';
 
 
 /* Zona2: Main - Hogar de los componentes */
-export default function App() {
+export default function PressableScreen() {
   return (
     <View style={styles.container}>
 
-      <MenuScreen></MenuScreen>
+        <Text>Aqui va la practica de Roque</Text>
 
       <StatusBar style="auto" />
 
