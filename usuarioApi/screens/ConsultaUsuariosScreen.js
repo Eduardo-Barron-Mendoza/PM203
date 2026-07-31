@@ -1,13 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import {SafeAreaView,View,Text,FlatList,StyleSheet,} from 'react-native';
+
+import { useRouter, useFocusEffect } from "expo-router";
+import React, {useState, useCallback} from 'react';
+import {SafeAreaView,View,Text,FlatList,StyleSheet,Pressable,} from 'react-native';
 
 export default function ConsultaUsuariosScreen() {
 
   const [usuarios, setUsuarios] = useState([]);
+  const router = useRouter();
 
   const obtenerUsuarios = async()=>{
     try{
-      const respuesta = await fetch('http://localhost:5000/v1/usuarios/');
+      const respuesta = await fetch('http://192.168.1.40:5000/v1/usuarios/');
       const datos = await respuesta.json();
       console.log("Respuesta API: ", datos);
       setUsuarios(datos.usuarios)
@@ -18,7 +21,11 @@ export default function ConsultaUsuariosScreen() {
     }
   };
 
-  useEffect(()=>{obtenerUsuarios()},[])
+  useFocusEffect(
+    useCallback(() => {
+      obtenerUsuarios();
+    }, [])
+  );
 
   const renderTarjeta = ({ item }) => (
     <View style={styles.card}>
@@ -30,6 +37,14 @@ export default function ConsultaUsuariosScreen() {
       <Text style={styles.info}>
         Edad: {item.edad} años
       </Text>
+      <Pressable
+        onPress={() => router.push({
+          pathname: '/detalle',
+          params: { id: item.id, nombre: item.nombre, edad: item.edad },
+        })}
+      >
+        <Text style={styles.link}>Ver detalles</Text>
+      </Pressable>
 
     </View>
   );
@@ -85,6 +100,14 @@ const styles = StyleSheet.create({
       width: 0,
       height: 3,
     },
+  },
+
+  link: {
+    color: '#2563EB',
+    fontWeight: 'bold',
+    fontSize: 14,
+    marginTop: 12,
+    textAlign: 'right',
   },
 
   nombre: {
