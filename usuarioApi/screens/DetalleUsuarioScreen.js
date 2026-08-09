@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { SafeAreaView, View, Text, Pressable, StyleSheet, Modal } from 'react-native';
 import { useLocalSearchParams, useRouter, useFocusEffect } from 'expo-router';
+import { apiConfig } from '../config/api';
 
 export default function DetalleUsuarioScreen() {
   const { id, nombre: nombreInicial, edad: edadInicial } = useLocalSearchParams();
@@ -11,7 +12,7 @@ export default function DetalleUsuarioScreen() {
 
   const obtenerUsuario = async () => {
     try {
-      const respuesta = await fetch(`http://192.168.1.40:5000/v1/usuarios/`);
+      const respuesta = await fetch(`${apiConfig.baseUrl}/v1/usuarios/`);
       const datos = await respuesta.json();
       const encontrado = datos.usuarios.find((usuario) => String(usuario.id) === String(id));
       if (encontrado) {
@@ -31,7 +32,7 @@ export default function DetalleUsuarioScreen() {
 
   const ejecutarEliminacion = async () => {
     try {
-      await fetch(`http://192.168.1.40:5000/v1/usuarios/${id}`, {
+      await fetch(`${apiConfig.baseUrl}/v1/usuarios/${id}`, {
         method: "DELETE",
         headers: { "Authorization": "Basic " + btoa("admin:1234") },
       });

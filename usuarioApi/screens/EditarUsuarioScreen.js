@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, SafeAreaView, Text, TextInput, Pressable, StyleSheet, Alert, Platform } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { apiConfig } from '../config/api';
 
 export default function EditarUsuarioScreen() {
   const { id, nombre: nombreInicial, edad: edadInicial } = useLocalSearchParams();
@@ -26,7 +27,7 @@ export default function EditarUsuarioScreen() {
 
     try {
       setCargando(true);
-      const respuesta = await fetch(`http://192.168.1.40:5000/v1/usuarios/${id}`, {
+      const respuesta = await fetch(`${apiConfig.baseUrl}/v1/usuarios/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
